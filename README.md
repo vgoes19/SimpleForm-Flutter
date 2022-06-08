@@ -1,6 +1,6 @@
 # Simple Form With Flutter
 
-This is a simple form make with flutter, having funcionalities how fields verification and listing card with component items of contact.
+This is a simple form made with flutter, having funcionalities how fields verification and listing card with component items of contact.
 
 ## Images
 
