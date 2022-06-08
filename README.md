@@ -1,16 +1,10 @@
-# simpleFormFlutter
+# Simple Form With Flutter
 
-A new Flutter project.
+This is a simple form make with flutter, haven funcionalities how filds verification and listing card with component items of contact
 
-## Getting Started
+## Images
 
-This project is a starting point for a Flutter application.
+<img src="https://github.com/vgoes19/SimpleForm-Flutter/lib/images/Screenshot_1654721805.png"/>
+<img src="https://github.com/vgoes19/SimpleForm-Flutter/lib/images/Screenshot_1654721826.png"/>
+<img src="https://github.com/vgoes19/SimpleForm-Flutter/lib/images/Screenshot_1654721946.png"/>
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
