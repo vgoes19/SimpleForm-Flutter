@@ -27,7 +27,7 @@ class Editor extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.blueGrey.shade600, width: 1.5),
+            borderSide: const BorderSide(color: Color(0XFF97ace5), width: 1.5),
             borderRadius: BorderRadius.circular(10.0),
           ),
           icon: Icon(icon),

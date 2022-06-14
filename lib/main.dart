@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:simple_form_flutter/pages/contatos/lista.dart';
+import 'package:simple_form_flutter/pages/dashboard/dashboard.dart';
 
 
 void main() => runApp( const SimpleFormFlutter() );
@@ -13,22 +13,22 @@ class SimpleFormFlutter extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.blueGrey[600],
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.blueGrey[600]
+        primaryColor: const Color(0XFF97ace5),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0XFF97ace5)
         ),
-        floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Colors.blueGrey[300]
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor:Color(0XFF97ace5)
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
-              Colors.blueGrey[300]
+              const Color(0XFF97ace5)
             )
           )
         ),
       ),
-      home: ListaContatos()
+      home: const Dashboard()
     );
   }
 }

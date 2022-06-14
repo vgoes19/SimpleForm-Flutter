@@ -21,6 +21,7 @@ class _FormularioContatoState extends State<FormularioContato> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: const Text('Novo contato'),
         
@@ -46,10 +47,15 @@ class _FormularioContatoState extends State<FormularioContato> {
               tipoInput: TextInputType.number,
             ),
       
-      
-            ElevatedButton(
-              child: const Text('Salvar'),
-              onPressed: () => _criaContato(context),
+            Padding(
+              padding: const EdgeInsets.only(top: 25),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: ElevatedButton(
+                  child: const Text('SALVAR'),
+                  onPressed: () => _criaContato(context),
+                ),
+              ),
             )
           ],
         ),

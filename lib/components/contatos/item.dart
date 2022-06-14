@@ -15,7 +15,10 @@ class ItemContato extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: const Icon(Icons.person),
+        leading: const Icon(
+          Icons.person,
+          size: 36,
+        ),
         title: Text(_contato.nomeContato.toString()),
         subtitle: Text(_contato.telefone.toString()),
       ),

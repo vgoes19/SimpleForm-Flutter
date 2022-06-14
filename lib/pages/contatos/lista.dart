@@ -21,15 +21,22 @@ class ListaContatosState extends State<ListaContatos> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      backgroundColor: const Color(0XFFE5EBFD),
       appBar: AppBar(
         title: const Text('Contatos'),
       ),
-      body: ListView.builder(
-        itemCount: widget._contatos.length,
-        itemBuilder: (context, indice) {
-          final contato = widget._contatos[indice];
-          return ItemContato(contato);
-        },
+      body: Padding(
+        padding: const EdgeInsets.only(top: 15),
+        child: ListView.builder(
+          itemCount: widget._contatos.length,
+          itemBuilder: (context, indice) {
+            final contato = widget._contatos[indice];
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
+              child: ItemContato(contato),
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add), 
