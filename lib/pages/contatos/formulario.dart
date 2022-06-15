@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_form_flutter/components/contatos/editor.dart';
+import 'package:simple_form_flutter/database/app_database.dart';
 import 'package:simple_form_flutter/models/contato.dart';
 
 
@@ -72,8 +73,8 @@ class _FormularioContatoState extends State<FormularioContato> {
     _retornaErroCamposVazios(nomeContato, telefone);
 
     if(_verificaCamposVazios(nomeContato, telefone)){
-      final contatoCriado = Contato(telefone, nomeContato);
-      Navigator.pop(context, contatoCriado);
+      final contatoCriado = Contato(0, nomeContato, telefone);
+      save(contatoCriado).then((id) => Navigator.pop(context)); 
     }
   }
 

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:simple_form_flutter/pages/dashboard/dashboard.dart';
 
 
-void main() => runApp( const SimpleFormFlutter() );
+void main(){
+  runApp( const SimpleFormFlutter() );
+}
 
 class SimpleFormFlutter extends StatelessWidget {
   const SimpleFormFlutter({ Key? key }) : super(key: key);

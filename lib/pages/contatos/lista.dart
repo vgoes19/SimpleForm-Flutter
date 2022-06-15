@@ -1,14 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_form_flutter/components/contatos/item.dart';
+import 'package:simple_form_flutter/database/app_database.dart';
 import 'package:simple_form_flutter/models/contato.dart';
 import 'formulario.dart';
 
 
 class ListaContatos extends StatefulWidget{
-  final List<Contato> _contatos = [];
 
-  ListaContatos({Key? key}) : super(key: key);
+  const ListaContatos({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -17,6 +17,7 @@ class ListaContatos extends StatefulWidget{
 }
 
 class ListaContatosState extends State<ListaContatos> {
+
   @override
   Widget build(BuildContext context) {
     
@@ -27,35 +28,47 @@ class ListaContatosState extends State<ListaContatos> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15),
-        child: ListView.builder(
-          itemCount: widget._contatos.length,
-          itemBuilder: (context, indice) {
-            final contato = widget._contatos[indice];
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
-              child: ItemContato(contato),
-            );
+        child: FutureBuilder(
+          future: findAll() ,
+          builder: (context, snapshot){
+
+            switch(snapshot.connectionState){
+              case ConnectionState.none:
+                break;
+              case ConnectionState.waiting:
+                return const Center(child: CircularProgressIndicator());
+              case ConnectionState.active:
+                break;
+              case ConnectionState.done:
+                final List<Contato> contacts = snapshot.data as List<Contato>;
+
+                return ListView.builder(
+                  itemCount: contacts.length,
+                  itemBuilder: (context, indice) {
+                    final Contato contato = contacts[indice];
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
+                      child: ItemContato(contato),
+                    );
+                  },
+                );
+            }
+
+            return const Center(child: Text('Unknown Error'));
           },
         ),
+        
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add), 
         onPressed: () {
-          final Future future = Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return const FormularioContato();
-          }));
-         
-          future.then((contatoRecebido) => _atualizaListaContatos(contatoRecebido));
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) {
+              return const FormularioContato();
+            })
+          ).then((id) => setState(() { }));
         },
       ),
     );
-  }
-
-  _atualizaListaContatos(contatoRecebido) {
-   
-    if(contatoRecebido != null){
-      contatoRecebido as Contato;
-      setState(() => widget._contatos.add(contatoRecebido));
-    }
   }
 }
