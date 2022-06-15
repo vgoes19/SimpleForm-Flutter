@@ -62,4 +62,16 @@ class ContatoDao{
       whereArgs: [id],
     );
   }
+
+  Future<void> updateContact(Contato contato) async {
+    final Database db = await getDatabase();
+
+    await db.update(
+      _tableName,
+      contato.toMap(),
+      where: 'id = ?',
+      whereArgs: [contato.id],
+    );
+  }
+  
 }

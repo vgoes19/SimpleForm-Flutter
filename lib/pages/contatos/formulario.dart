@@ -3,16 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:simple_form_flutter/components/contatos/editor.dart';
 import 'package:simple_form_flutter/database/dao/contato_dao.dart';
 import 'package:simple_form_flutter/models/contato.dart';
+import 'package:simple_form_flutter/pages/contatos/lista.dart';
 
 
 class FormularioContato extends StatefulWidget {
-  const FormularioContato({ Key? key }) : super(key: key);
+  
+  final Contato? contatoUpdate;
+  
+  const FormularioContato({ 
+    Key? key,
+    this.contatoUpdate 
+  }) : super(key: key);
 
   @override
   State<FormularioContato> createState() => _FormularioContatoState();
 }
 
 class _FormularioContatoState extends State<FormularioContato> {
+
+  @override
+  void initState() {
+    super.initState();
+    if(widget.contatoUpdate != null){
+      _preencheCampos(widget.contatoUpdate!);
+    }
+  }
+
   final TextEditingController _controllerNomeContato = TextEditingController();
   final TextEditingController _controllerTelefone = TextEditingController();
   final ContatoDao _dao = ContatoDao();
@@ -26,7 +42,6 @@ class _FormularioContatoState extends State<FormularioContato> {
       
       appBar: AppBar(
         title: const Text('Novo contato'),
-        
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -55,7 +70,7 @@ class _FormularioContatoState extends State<FormularioContato> {
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: ElevatedButton(
                   child: const Text('SALVAR'),
-                  onPressed: () => _criaContato(context),
+                  onPressed: () => widget.contatoUpdate != null ?  _atualizaContato(widget.contatoUpdate!.id) : _criaContato(context),
                 ),
               ),
             )
@@ -65,6 +80,22 @@ class _FormularioContatoState extends State<FormularioContato> {
     );
   }
 
+  _preencheCampos(Contato contatoUpdate){
+    _controllerNomeContato.text = contatoUpdate.nomeContato;
+    _controllerTelefone.text = contatoUpdate.telefone;
+  }
+
+  _atualizaContato(int idContato){
+    final String nomeContato = _controllerNomeContato.text;
+    final String telefone = _controllerTelefone.text;
+
+    final contatoUpdate = Contato(idContato, nomeContato, telefone);
+    _dao.updateContact(contatoUpdate).then((id) => {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const ListaContatos())
+      ) 
+    });
+  }
 
   _criaContato(BuildContext context) {
 

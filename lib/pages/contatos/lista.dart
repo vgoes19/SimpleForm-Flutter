@@ -49,7 +49,14 @@ class ListaContatosState extends State<ListaContatos> {
                     final Contato contato = contacts[indice];
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 5, left: 10, right: 10),
-                      child: ItemContato(contato),
+                      child: GestureDetector(
+                        onTap: () => {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => FormularioContato(contatoUpdate: contato))
+                          ) 
+                        },
+                        child: ItemContato(contato)
+                      ),
                     );
                   },
                 );
