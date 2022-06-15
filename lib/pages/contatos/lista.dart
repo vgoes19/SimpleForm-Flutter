@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:simple_form_flutter/components/contatos/item.dart';
+import 'package:simple_form_flutter/components/contatos/item_contato.dart';
 import 'package:simple_form_flutter/database/dao/contato_dao.dart';
 import 'package:simple_form_flutter/models/contato.dart';
 import 'formulario.dart';

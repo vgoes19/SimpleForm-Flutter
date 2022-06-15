@@ -52,4 +52,14 @@ class ContatoDao{
     }
     return contacts;
   }
+
+  Future<void> deleteContact(int id) async {
+    final Database db = await getDatabase();
+
+    await db.delete(
+      _tableName,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

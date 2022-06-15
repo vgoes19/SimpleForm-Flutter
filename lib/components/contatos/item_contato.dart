@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_form_flutter/components/contatos/excluir_contato.dart';
 import 'package:simple_form_flutter/models/contato.dart';
 
 
@@ -18,10 +19,13 @@ class ItemContato extends StatelessWidget {
         leading: const Icon(
           Icons.person,
           size: 36,
+          color: Color(0XFF97ace5),
         ),
         title: Text(_contato.nomeContato.toString()),
         subtitle: Text(_contato.telefone.toString()),
+        trailing: ExcluirContato(nomeContato: _contato.nomeContato, id: _contato.id),
       ),
     );
   }
 }
+
