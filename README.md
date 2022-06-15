@@ -5,6 +5,7 @@ This is a simple form made with flutter, having funcionalities:
   - listing card 
   - component items of contact.
   - persist data CRUD of contacts with sqflite 
+  - alert dialog for confirmation
 
 ## Images
 
