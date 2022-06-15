@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_form_flutter/components/contatos/item.dart';
-import 'package:simple_form_flutter/database/app_database.dart';
+import 'package:simple_form_flutter/database/dao/contato_dao.dart';
 import 'package:simple_form_flutter/models/contato.dart';
 import 'formulario.dart';
 
@@ -17,6 +17,7 @@ class ListaContatos extends StatefulWidget{
 }
 
 class ListaContatosState extends State<ListaContatos> {
+  final ContatoDao _dao = ContatoDao();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class ListaContatosState extends State<ListaContatos> {
       body: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: FutureBuilder(
-          future: findAll() ,
+          future: _dao.findAll() ,
           builder: (context, snapshot){
 
             switch(snapshot.connectionState){

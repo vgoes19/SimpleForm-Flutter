@@ -28,7 +28,7 @@ class Dashboard extends StatelessWidget {
             titulo: 'Contatos',
             navigateTo: () => {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => ListaContatos())
+                MaterialPageRoute(builder: (context) => const ListaContatos())
               ) 
             }
           )

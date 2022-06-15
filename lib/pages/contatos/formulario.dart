@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_form_flutter/components/contatos/editor.dart';
-import 'package:simple_form_flutter/database/app_database.dart';
+import 'package:simple_form_flutter/database/dao/contato_dao.dart';
 import 'package:simple_form_flutter/models/contato.dart';
 
 
@@ -15,6 +15,7 @@ class FormularioContato extends StatefulWidget {
 class _FormularioContatoState extends State<FormularioContato> {
   final TextEditingController _controllerNomeContato = TextEditingController();
   final TextEditingController _controllerTelefone = TextEditingController();
+  final ContatoDao _dao = ContatoDao();
 
   bool _validateNumConta = false;
   bool _validateValorTransf = false;
@@ -74,7 +75,7 @@ class _FormularioContatoState extends State<FormularioContato> {
 
     if(_verificaCamposVazios(nomeContato, telefone)){
       final contatoCriado = Contato(0, nomeContato, telefone);
-      save(contatoCriado).then((id) => Navigator.pop(context)); 
+      _dao.save(contatoCriado).then((id) => Navigator.pop(context)); 
     }
   }
 
