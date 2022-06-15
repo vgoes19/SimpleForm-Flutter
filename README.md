@@ -1,9 +1,6 @@
 # Simple Form With Flutter
 
-This is a simple form made with flutter, having funcionalities: 
- - fields verification 
- - listing card with component items of contact.
- - persist data CRUD of contacts with sqflite
+This is a simple form made with flutter, having funcionalities how fields verification and listing card with component items of contact.
 
 ## Images
 
